@@ -1,7 +1,7 @@
-from RenaBot.config import client as C
+from config import client as C
 from telethon import events,Button
-from RenaBot.breh import download_without_progressbar
-from RenaBot.breh import upload_without_progress_bar
+from breh import download_without_progressbar
+from breh import upload_without_progress_bar
 from telethon.utils import is_image,get_input_media
 import re
 import os
