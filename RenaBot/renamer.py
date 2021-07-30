@@ -30,6 +30,7 @@ async def adder(event):
     addition=reply.get_sender()
     try:
         listed.append(addition.id)
+        await event.reply("The user has been added to whitelist.")
     except:
         await event.reply("I don't know how but it seems like that account is deleted.")
 
