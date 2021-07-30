@@ -1,7 +1,7 @@
-from config import client as C
+from RenaBot.config import client as C
 from telethon import events,Button
-from breh import download_without_progressbar
-from breh import upload_without_progress_bar
+from RenaBot.breh import download_without_progressbar
+from RenaBot.breh import upload_without_progress_bar
 from telethon.utils import is_image,get_input_media
 import re
 import os
@@ -59,8 +59,7 @@ async def renamer(event):
     if usage==False:
         usage=True
     else:
-        sender=await event.get_sender()
-        await event.reply(f"Currently, someone else is using the bot. @{sender.username}")
+        await event.reply("Currently, someone else is using the bot.")
         return
         
     text=event.raw_text
@@ -94,11 +93,7 @@ async def renamer(event):
         await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
     else:
         await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}')
-<<<<<<< Updated upstream
     shutil.rmtree((f'{event.peer_id.user_id}\\'))
-=======
-    shutil.rmtree((f'{event.peer_id.user_id}//'))
->>>>>>> Stashed changes
     usage=False
 ###TOO MUCH SHIT TO TAMPER WITH#####  END GAME
 @C.on(events.NewMessage(pattern="/batch"))
@@ -107,8 +102,7 @@ async def batchrenamer(event):
     if usage==False:
         usage=True
     else:
-        sender=await event.get_sender()
-        await event.reply(f"Currently, someone else is using the bot. @{sender.username}")
+        await event.reply("Currently, someone else is using the bot.")
         return
     if event.is_reply:
         pass
@@ -170,13 +164,8 @@ async def batchrenamer(event):
             await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f"{file_name} {number}{download_ext}")
         number=number+1
     await event.reply("Process Finished.")
-<<<<<<< Updated upstream
     usage=False
     shutil.rmtree((f'{event.peer_id.user_id}\\'))   
-=======
-    shutil.rmtree((f'{event.peer_id.user_id}//'))   
-    usage=False
->>>>>>> Stashed changes
         
 @C.on(events.NewMessage(pattern="/autoforward"))
 async def auto(event):
@@ -232,8 +221,5 @@ async def rem(event):
         return               
     else:
         await event.reply("You haven't set a thumb.")
-<<<<<<< Updated upstream
     
-=======
-    
->>>>>>> Stashed changes
+
