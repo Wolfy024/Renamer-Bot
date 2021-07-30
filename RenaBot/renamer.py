@@ -12,14 +12,46 @@ Batch=False
 AutoBatch=False
 global usage
 usage= False
+global list
+listed=[]
+def unlisted():
+    await event.reply("Don't try to touch my master's property, fool.")
+    await event.reply("If you wish to fork, go here")
+    await event.reply(r"https://github.com/Wolfy024/Renamer-Bot")
+    
+@C.on(events.NewMessage(pattern="/add",from_users=int(Admin)))
+async def adder(event):
+    global listed
+    if event.is_reply:
+        pass
+    else:
+        await event.reply("Reply to the user's message")
+    reply=await event.get_reply_message()
+    addition=reply.get_sender()
+    try:
+        listed.append(addition.id)
+    except:
+        await event.reply("I don't know how but it seems like that account is deleted.")
 
 @C.on(events.NewMessage(pattern="/start"))
 async def st(event):
-    await event.reply("What are you trying to achieve ?")
+    sender=event.get_sender()
+    global listed
+    if sender not in listed:
+        unlisted()
+        return
+    else:
+        await event.reply("What are you trying to achieve ?")
     
 @C.on(events.NewMessage(pattern="/help"))
 async def hel(event):
-    await event.reply('''1) /setthumb - reply to an image and make it thumbnail.
+    sender=event.get_sender()
+    global listed
+    if sender not in listed:
+        unlisted()
+        return
+    else:
+        await event.reply('''1) /setthumb - reply to an image and make it thumbnail.
 2)/setthumb to replace your previous thumb.
 3)/remthumb - Removes the last set thumb.
 4) /rename - Renames and sets thumb for a single file. Reply to the file you wanna rename.
@@ -43,6 +75,13 @@ IMPORTANT- DO NOT PROVIDE FILE EXTENSION !!! IT WILL AUTO DETECT.''')
 
 @C.on(events.NewMessage(pattern="/setthumb"))
 async def thumb(event):
+    sender=event.get_sender()
+    global listed
+    if sender not in listed:
+        unlisted()
+        return
+    else:
+        pass
     reply=await event.get_reply_message()
     if is_image(reply):
         thumb = await C.download_media(reply.photo)
@@ -57,6 +96,13 @@ async def thumb(event):
     
 @C.on(events.NewMessage(pattern="/rename"))
 async def renamer(event):
+    sender=event.get_sender()
+    global listed
+    if sender not in listed:
+        unlisted()
+        return
+    else:
+        pass
     global usage
     if usage==False:
        global userrr
@@ -106,6 +152,13 @@ async def renamer(event):
 ###TOO MUCH SHIT TO TAMPER WITH#####  END GAME
 @C.on(events.NewMessage(pattern="/batch"))
 async def batchrenamer(event):
+    sender=event.get_sender()
+    global listed
+    if sender not in listed:
+        unlisted()
+        return
+    else:
+        pass
     global usage
     if usage==False:
        global userrr
@@ -183,6 +236,13 @@ async def batchrenamer(event):
         
 @C.on(events.NewMessage(pattern="/autoforward"))
 async def auto(event):
+    sender=event.get_sender()
+    global listed
+    if sender not in listed:
+        unlisted()
+        return
+    else:
+        pass
     if event.is_reply:
         pass
     else:
@@ -229,6 +289,13 @@ async def auto(event):
         
 @C.on(events.NewMessage(pattern="/remthumb"))
 async def rem(event):
+    sender=event.get_sender()
+    global listed
+    if sender not in listed:
+        unlisted()
+        return
+    else:
+        pass
     if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
         os.remove(f"Thumbs\\{event.peer_id.user_id}.png")
         await event.reply("Thumb Deleted.")
