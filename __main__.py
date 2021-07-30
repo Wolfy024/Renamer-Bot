@@ -1,4 +1,4 @@
-from RenaBot.config import client as c
-from RenaBot.renamer import renamer
+from config import client as c
+from renamer import renamer
 c.start()
 c.run_until_disconnected()
