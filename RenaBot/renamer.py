@@ -13,13 +13,14 @@ AutoBatch=False
 global usage
 usage= False
 global list
-listed=[]
+Real_Admin=int(Admin)
+listed=[Real_Admin]
 async def unlisted(event):
     await event.reply("Don't try to touch my master's property, fool.")
     await event.reply("If you wish to fork, go here")
     await event.reply(r"https://github.com/Wolfy024/Renamer-Bot")
     
-@C.on(events.NewMessage(pattern="/add",from_users=int(Admin)))
+@C.on(events.NewMessage(pattern="/add",from_users=Real_Admin))
 async def adder(event):
     global listed
     if event.is_reply:
