@@ -5,7 +5,8 @@ from RenaBot.breh import upload_without_progress_bar
 from telethon.utils import is_image,get_input_media
 import re
 import os
-import shutil 
+import shutil
+from RenaBot.config import Admin
 
 Batch=False
 AutoBatch=False
