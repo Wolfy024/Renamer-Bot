@@ -14,7 +14,7 @@ global usage
 usage= False
 global list
 listed=[]
-def unlisted():
+async def unlisted():
     await event.reply("Don't try to touch my master's property, fool.")
     await event.reply("If you wish to fork, go here")
     await event.reply(r"https://github.com/Wolfy024/Renamer-Bot")
@@ -38,7 +38,7 @@ async def st(event):
     sender=event.get_sender()
     global listed
     if sender not in listed:
-        unlisted()
+        await unlisted()
         return
     else:
         await event.reply("What are you trying to achieve ?")
@@ -48,7 +48,7 @@ async def hel(event):
     sender=event.get_sender()
     global listed
     if sender not in listed:
-        unlisted()
+        await unlisted()
         return
     else:
         await event.reply('''1) /setthumb - reply to an image and make it thumbnail.
@@ -78,7 +78,7 @@ async def thumb(event):
     sender=event.get_sender()
     global listed
     if sender not in listed:
-        unlisted()
+        await unlisted()
         return
     else:
         pass
@@ -99,7 +99,7 @@ async def renamer(event):
     sender=event.get_sender()
     global listed
     if sender not in listed:
-        unlisted()
+        await unlisted()
         return
     else:
         pass
@@ -155,7 +155,7 @@ async def batchrenamer(event):
     sender=event.get_sender()
     global listed
     if sender not in listed:
-        unlisted()
+        await unlisted()
         return
     else:
         pass
@@ -239,7 +239,7 @@ async def auto(event):
     sender=event.get_sender()
     global listed
     if sender not in listed:
-        unlisted()
+        await unlisted()
         return
     else:
         pass
@@ -292,7 +292,7 @@ async def rem(event):
     sender=event.get_sender()
     global listed
     if sender not in listed:
-        unlisted()
+        await unlisted()
         return
     else:
         pass
