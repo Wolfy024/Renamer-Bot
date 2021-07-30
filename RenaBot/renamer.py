@@ -36,7 +36,7 @@ async def adder(event):
 
 @C.on(events.NewMessage(pattern="/start"))
 async def st(event):
-    sender=event.get_sender()
+    sender=await event.get_sender()
     global listed
     if sender not in listed:
         await unlisted(event)
@@ -46,7 +46,7 @@ async def st(event):
     
 @C.on(events.NewMessage(pattern="/help"))
 async def hel(event):
-    sender=event.get_sender()
+    sender=await event.get_sender()
     global listed
     if sender not in listed:
         await unlisted(event)
@@ -76,7 +76,7 @@ IMPORTANT- DO NOT PROVIDE FILE EXTENSION !!! IT WILL AUTO DETECT.''')
 
 @C.on(events.NewMessage(pattern="/setthumb"))
 async def thumb(event):
-    sender=event.get_sender()
+    sender=await event.get_sender()
     global listed
     if sender not in listed:
         await unlisted(event)
@@ -97,7 +97,7 @@ async def thumb(event):
     
 @C.on(events.NewMessage(pattern="/rename"))
 async def renamer(event):
-    sender=event.get_sender()
+    sender=await event.get_sender()
     global listed
     if sender not in listed:
         await unlisted(event)
@@ -153,7 +153,7 @@ async def renamer(event):
 ###TOO MUCH SHIT TO TAMPER WITH#####  END GAME
 @C.on(events.NewMessage(pattern="/batch"))
 async def batchrenamer(event):
-    sender=event.get_sender()
+    sender=await event.get_sender()
     global listed
     if sender not in listed:
         await unlisted(event)
@@ -237,7 +237,7 @@ async def batchrenamer(event):
         
 @C.on(events.NewMessage(pattern="/autoforward"))
 async def auto(event):
-    sender=event.get_sender()
+    sender=await event.get_sender()
     global listed
     if sender not in listed:
         await unlisted(event)
@@ -290,7 +290,7 @@ async def auto(event):
         
 @C.on(events.NewMessage(pattern="/remthumb"))
 async def rem(event):
-    sender=event.get_sender()
+    sender=await event.get_sender()
     global listed
     if sender not in listed:
         await unlisted(event)
