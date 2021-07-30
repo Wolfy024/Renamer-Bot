@@ -32,6 +32,7 @@ async def adder(event):
     try:
         if addition.id in listed:
             await event.reply('This user is already whitelisted.')
+            return
         else:
             listed.append(addition.id)
         await event.reply("The user has been added to whitelist.")
@@ -53,6 +54,7 @@ async def remover(event):
             await event.reply("The user has been added to blacklist.")
         else:
             await event.reply("User is already blacklisted.")
+            return
     except:
         await event.reply("I don't know how but it seems like that account is deleted.")
     
