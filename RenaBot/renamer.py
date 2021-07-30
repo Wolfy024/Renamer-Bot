@@ -30,11 +30,32 @@ async def adder(event):
     reply=await event.get_reply_message()
     addition=await reply.get_sender()
     try:
-        listed.append(addition.id)
+        if addition.id in listed:
+            await event.reply('This user is already whitelisted.')
+        else:
+            listed.append(addition.id)
         await event.reply("The user has been added to whitelist.")
     except:
         await event.reply("I don't know how but it seems like that account is deleted.")
-
+     
+@C.on(events.NewMessage(pattern="/remove",from_users=Real_Admin))
+async def remover(event):
+    global listed
+    if event.is_reply:
+        pass
+    else:
+        await event.reply("Reply to the user's message")
+    reply=await event.get_reply_message()
+    addition=await reply.get_sender()
+    try:
+        if addition.id in listed:
+            listed.remove(addition.id)
+            await event.reply("The user has been added to blacklist.")
+        else:
+            await event.reply("User is already blacklisted.")
+    except:
+        await event.reply("I don't know how but it seems like that account is deleted.")
+    
 @C.on(events.NewMessage(pattern="/start"))
 async def st(event):
     sender=await event.get_sender()
