@@ -58,12 +58,11 @@ async def thumb(event):
 async def renamer(event):
     global usage
     if usage==False:
-        usage=True
+       pass
     else:
-        current=await event.get_sender()
-        await event.reply(f"Currently, someone else is using the bot. @{current.username}")
+        await event.reply(f"Currently, someone else is using the bot.")
         return
-        
+    usage=True    
     text=event.raw_text
     reply=await event.get_reply_message()
     if event.is_reply:
@@ -102,11 +101,11 @@ async def renamer(event):
 async def batchrenamer(event):
     global usage
     if usage==False:
-        usage=True
+        pass
     else:
-        current=await event.get_sender()
-        await event.reply(f"Currently, someone else is using the bot. @{current.username}")
+        await event.reply(f"Currently, someone else is using the bot.")
         return
+    usage=True
     if event.is_reply:
         pass
     else:
