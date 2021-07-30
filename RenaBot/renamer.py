@@ -39,7 +39,7 @@ async def adder(event):
 async def st(event):
     sender=await event.get_sender()
     global listed
-    if sender not in listed:
+    if sender.id not in listed:
         await unlisted(event)
         return
     else:
@@ -49,7 +49,7 @@ async def st(event):
 async def hel(event):
     sender=await event.get_sender()
     global listed
-    if sender not in listed:
+    if sender.id not in listed:
         await unlisted(event)
         return
     else:
@@ -79,7 +79,7 @@ IMPORTANT- DO NOT PROVIDE FILE EXTENSION !!! IT WILL AUTO DETECT.''')
 async def thumb(event):
     sender=await event.get_sender()
     global listed
-    if sender not in listed:
+    if sender.id not in listed:
         await unlisted(event)
         return
     else:
@@ -100,7 +100,7 @@ async def thumb(event):
 async def renamer(event):
     sender=await event.get_sender()
     global listed
-    if sender not in listed:
+    if sender.id not in listed:
         await unlisted(event)
         return
     else:
@@ -156,7 +156,7 @@ async def renamer(event):
 async def batchrenamer(event):
     sender=await event.get_sender()
     global listed
-    if sender not in listed:
+    if sender.id not in listed:
         await unlisted(event)
         return
     else:
@@ -240,7 +240,7 @@ async def batchrenamer(event):
 async def auto(event):
     sender=await event.get_sender()
     global listed
-    if sender not in listed:
+    if sender.id not in listed:
         await unlisted(event)
         return
     else:
@@ -293,7 +293,7 @@ async def auto(event):
 async def rem(event):
     sender=await event.get_sender()
     global listed
-    if sender not in listed:
+    if sender.id not in listed:
         await unlisted(event)
         return
     else:
