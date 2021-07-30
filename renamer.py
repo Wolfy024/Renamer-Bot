@@ -59,7 +59,8 @@ async def renamer(event):
     if usage==False:
         usage=True
     else:
-        await event.reply("Currently, someone else is using the bot.")
+        sender=await event.get_sender()
+        await event.reply(f"Currently, someone else is using the bot. @{sender.username}")
         return
         
     text=event.raw_text
@@ -106,7 +107,8 @@ async def batchrenamer(event):
     if usage==False:
         usage=True
     else:
-        await event.reply("Currently, someone else is using the bot.")
+        sender=await event.get_sender()
+        await event.reply(f"Currently, someone else is using the bot. @{sender.username}")
         return
     if event.is_reply:
         pass
