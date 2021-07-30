@@ -70,22 +70,27 @@ async def renamer(event):
         pass
     else:
         await event.reply("Reply to something to rename it.")
+        usage= False
         return
     try:
         text=text.split(" ",maxsplit=1)[1]
     except IndexError:
          await event.reply("Yea, I should rename it as nothing then ?")
+         usage= False
          return
     if text=="":
         await event.reply("Yea, I should rename it as nothing then ?")
+        usage= False
         return
     if '.' in text:
         await event.reply("Sorry, we don't rename files with '.' in the renamed text. A precaution to prevent harm to your files.We automatically detect and put extensions.")
+        usage= False
         return
     try:
         a=get_input_media(reply)
     except TypeError:
         await event.reply("No media found to rename.")
+        usage= False
         return  
     await event.reply("Please wait while we rename your file.")
     download=await download_without_progressbar(client=C,msg=reply,down_location=f'{event.peer_id.user_id}\\')
@@ -112,17 +117,20 @@ async def batchrenamer(event):
         pass
     else:
         await event.reply("Reply to something to rename it.")
+        usage= False
         return
     reply=await event.get_reply_message()
     text=event.raw_text
     if '.' in text:
         await event.reply("Sorry, we don't rename files with '.' in the renamed text. A precaution to prevent harm to your files.We automatically detect and put extensions.")
+        usage= False
         return
     text=text.split(" ",1)
     try:
         _=text[1]
     except:
-        await event.reply("Can't rename the files without any input.")  
+        await event.reply("Can't rename the files without any input.")
+        usage= False
         return
     Amount_Fetcher=int(*re.findall(r'\d+', text[0]))
     if Amount_Fetcher==0:
@@ -138,6 +146,7 @@ async def batchrenamer(event):
             number=int(number[1])
         except:
             await event.reply("Enter a number after zzz not text.")
+            usage= False
             return
     else:
         number=1
