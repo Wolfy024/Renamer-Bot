@@ -28,7 +28,7 @@ async def adder(event):
     else:
         await event.reply("Reply to the user's message")
     reply=await event.get_reply_message()
-    addition=reply.get_sender()
+    addition=await reply.get_sender()
     try:
         listed.append(addition.id)
         await event.reply("The user has been added to whitelist.")
