@@ -12,7 +12,7 @@ Batch=False
 AutoBatch=False
 global usage
 usage= False
-global list
+global listed
 Real_Admin=int(Admin)
 listed=[Real_Admin]
 async def unlisted(event):
@@ -238,7 +238,10 @@ async def batchrenamer(event):
         end=event.id
     
     for i in range(start,end):
-        message=await C.get_messages(event.chat_id,ids=i)
+        try:
+            message=await C.get_messages(event.chat_id,ids=i)
+        except:
+            continue
         try:
             a=get_input_media(message)
         except:
@@ -248,7 +251,10 @@ async def batchrenamer(event):
         else:
             pass
         download=await download_without_progressbar(client=C,msg=message,down_location=f"{event.peer_id.user_id}\\")
-        download_ext='.'+download.split(".")[-1]
+        try:
+            download_ext='.'+download.split(".")[-1]
+        except:
+            download_ext=""
         if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
             await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f"{file_name} {number}{download_ext}",thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
         else:
