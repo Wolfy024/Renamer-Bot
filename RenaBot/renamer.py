@@ -171,8 +171,12 @@ async def renamer(event):
         await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
     else:
         await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}')
-    shutil.rmtree((f'{event.peer_id.user_id}\\'))
     usage=False
+    try:
+        shutil.rmtree((f'{event.peer_id.user_id}\\'))
+    except:
+        pass
+    
 ###TOO MUCH SHIT TO TAMPER WITH#####  END GAME
 @C.on(events.NewMessage(pattern="/batch"))
 async def batchrenamer(event):
@@ -262,9 +266,15 @@ async def batchrenamer(event):
         else:
             await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f"{file_name} {number}{download_ext}")
         number=number+1
-    await event.reply("Process Finished.")
+    try:
+        await event.reply("Process Finished.")
+    except:
+        pass
     usage=False
-    shutil.rmtree((f'{event.peer_id.user_id}\\'))   
+    try:
+        shutil.rmtree((f'{event.peer_id.user_id}\\'))
+    except:
+        pass
         
 @C.on(events.NewMessage(pattern="/autoforward"))
 async def auto(event):
