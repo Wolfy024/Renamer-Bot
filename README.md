@@ -1,8 +1,8 @@
 # Renamer-Bot
-<p align="left" > <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Wolfy024/Renamer-Bot?style=plastic">
+<p align="centre" > <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Wolfy024/Renamer-Bot?style=plastic">
  <a> <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr-raw/Wolfy024/Renamer-Bot?color=blue&label=Open%20PRs"> <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/Wolfy024/Renamer-Bot?color=blue&label=Closed%20PRs"> </a> </p>
 
-<img alt="GitHub forks" src="https://img.shields.io/github/forks/Wolfy024/Renamer-Bot?logoColor=blue&style=social">
+<p align="centre" > <img alt="GitHub forks" src="https://img.shields.io/github/forks/Wolfy024/Renamer-Bot?logoColor=blue&style=social"> </p>
 
 # Basic Overview
 
