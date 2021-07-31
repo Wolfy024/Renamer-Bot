@@ -16,9 +16,8 @@ global list
 Real_Admin=int(Admin)
 listed=[Real_Admin]
 async def unlisted(event):
-    await event.reply("Don't try to touch my master's property, fool.")
-    await event.reply("If you wish to fork, go here")
-    await event.reply(r"https://github.com/Wolfy024/Renamer-Bot")
+    await event.reply("Don't try to touch my master's property, fool. If you wish to use me, [fork here](https://github.com/Wolfy024/Renamer-Bot) and give a star")
+    
     
 @C.on(events.NewMessage(pattern="/add",from_users=Real_Admin))
 async def adder(event):
