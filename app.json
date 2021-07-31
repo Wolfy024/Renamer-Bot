@@ -20,7 +20,7 @@
         "ADMIN_ID" : {
             "description": "Get your own ID anyhow you can, easy way is to use /id with a well recognised bot on telegram.",
             "value": ""
-        },
+        }},
         "buildpacks": [{"url": "heroku/python"}],
         "formation": {
             "web":{
@@ -31,6 +31,5 @@
             "quantity": 1,
             "size": "free"
             }
-        }
         }
     }
