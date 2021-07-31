@@ -1,0 +1,25 @@
+{
+    "name": "Renamer Bot",
+    "description": "Bot that renames single/multiple files and auto forwards.",
+    "website": "https://github.com/Wolfy024",
+    "repository": "https://github.com/Wolfy024/Renamer-Bot",
+    "keywords": ["telegrambot", "renamerbot"],
+    "env": {
+        "API_ID": {
+          "description": "Get this value from https://my.telegram.org",
+          "value": ""
+        },
+        "API_HASH": {
+          "description": "Get this value from https://my.telegram.org",
+          "value": ""
+        },
+         "TOKEN": {
+          "description": "Your bot token, as a string. Get it from @BotFather on telegram",
+          "value": ""
+        },
+        "ADMIN_ID" : {
+            "description": "Get your own ID anyhow you can, easy way is to use /id with a well recognised bot on telegram.",
+            "value": ""
+        }
+}
+© 2021 GitHub, Inc.
