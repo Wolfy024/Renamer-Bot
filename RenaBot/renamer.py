@@ -233,6 +233,8 @@ async def batchrenamer(event):
     if Batch==True:
         start=reply.id
         end=start+Amount_Fetcher
+        if end>event.id:
+            end=event.id
     elif Batch==False:
         start=reply.id
         end=event.id
@@ -309,6 +311,8 @@ async def auto(event):
     if AutoBatch==True:
         start=reply.id
         end=start+Amount_Fetcher
+        if end>event.id:
+            end=event.id
     elif AutoBatch==False:
         start=reply.id
         end=event.id
