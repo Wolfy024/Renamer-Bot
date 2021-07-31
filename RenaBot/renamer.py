@@ -287,18 +287,17 @@ async def auto(event):
     except:
         await event.reply("Can't forward to nothingness")  
         return
+    text=text.split(" ")
     Amount_Fetcher=int(*re.findall(r'\d+', text[0]))
     if Amount_Fetcher==0:
         AutoBatch=False
     else:
         AutoBatch=True
-    await event.reply(text[1])
     if text[1].isdigit():
         text[1]='-100'+text[1]
         try:
             a=await C.get_entity(int(text[1]))
         except Exception as e:
-            await event.reply(e)
             await event.reply("Chat not found, Add me to the chat, so i can do something about it.")
         chat=a
     else:
