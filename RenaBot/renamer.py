@@ -10,7 +10,6 @@ from RenaBot.config import Admin
 
 Batch=False
 AutoBatch=False
-global usage
 usage= False
 global listed
 Real_Admin=int(Admin)
