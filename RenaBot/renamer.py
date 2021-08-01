@@ -402,6 +402,10 @@ async def canceller(event):
     try:
         for task in tasks:
             task.cancel()
+        try:
+            await asyncio.sleep(0.5)
+        except:
+            pass
         tasks.remove(task)
         await C.send_message(chatwhere,"Task cancelled successfully.")
     except:
