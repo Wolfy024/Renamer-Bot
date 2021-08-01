@@ -85,7 +85,7 @@ async def hel(event):
 6) /autoforward -  use this followed by channel/group id and message from where u replied will be forwarded.
 7) /batch(number) - it will rename as many files as specified on number. eg - /batch5 (name of file). 5 Files will be renamed.
 8) /autoforward(number) -  use this followed by channel/group id and message from where u replied will be forwarded. eg- /autoforward5 will auto forward 5 next files.
-9) /cancel - Cancel the ongoing task
+9) /cancel - Cancel the ongoing task.
 Only works for batchrename- Batch rename will add default counter in the end which starts from 1 if you want to start numbering from some other number. use 
 #zzz123
 #zzz wherever you write this, the numbering will start so, be careful.
