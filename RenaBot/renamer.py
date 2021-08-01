@@ -129,6 +129,11 @@ async def renamer_starter(event):
     sender=await event.get_sender()
     global listed
     global usage
+    if event.is_reply:
+        pass
+    else:
+        await event.reply("Reply to something to rename it.")
+        return
     if sender.id not in listed:
         await unlisted(event)
         return
@@ -151,13 +156,6 @@ async def renamer(event):
     usage=True    
     text=event.raw_text
     reply=await event.get_reply_message()
-    if event.is_reply:
-        pass
-    else:
-        await event.reply("Reply to something to rename it.")
-        usage= False
-        tasks.remove(task)
-        return
     try:
         text=text.split(" ",maxsplit=1)[1]
     except IndexError:
@@ -208,6 +206,11 @@ async def batch_starter(event):
     sender=await event.get_sender()
     global listed
     global usage
+    if event.is_reply:
+        pass
+    else:
+        await event.reply("Reply to something to rename it.")
+        return
     if sender.id not in listed:
         await unlisted(event)
         return
@@ -229,13 +232,6 @@ async def batchrenamer(event):
     chatwhere=event.chat_id
     global usage
     usage=True
-    if event.is_reply:
-        pass
-    else:
-        await event.reply("Reply to something to rename it.")
-        usage= False
-        tasks.remove(task)
-        return
     reply=await event.get_reply_message()
     text=event.raw_text
     if '.' in text:
