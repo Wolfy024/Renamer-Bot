@@ -201,7 +201,6 @@ async def renamer(event):
     
 ###TOO MUCH SHIT TO TAMPER WITH#####  END GAME
 @C.on(events.NewMessage(pattern="/batch"))
-async auto_
 async def batch_starter(event):
     sender=await event.get_sender()
     global listed
