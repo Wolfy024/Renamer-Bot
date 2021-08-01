@@ -35,7 +35,7 @@ async def download_with_progressbar(client, msg,down_location,edited):
 
     file = msg.document
     filename = msg.file.name
-     dir = f"{down_location}"
+    dir = f"{down_location}"
     try:
         if os.path.exists(dir):
             pass
