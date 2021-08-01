@@ -406,8 +406,11 @@ async def batch_starter(event):
 @C.on(events.NewMessage(pattern="/cancel"))
 async def canceller(event):
     chatwhere=event.chat_id
-    global usage 
+    global usage
+    global tasks
     usage=False
+    if len(tasks)==0:
+        await event.reply("No tasks are happening.")
     try:
         for task in tasks:
             task.cancel()
@@ -418,7 +421,7 @@ async def canceller(event):
         tasks.clear()
         await C.send_message(chatwhere,"Task cancelled successfully.")
     except:
-        await C.send_message(chatwhere,"No tasks are happening.")
+        await C.send_message(chatwhere,"Some error occured.")
      
         
         
