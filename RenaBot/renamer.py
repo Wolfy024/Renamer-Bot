@@ -1,4 +1,5 @@
 from RenaBot.config import client as C
+from RenaBot.config import Admin
 from telethon import events,Button
 from RenaBot.breh import download_without_progressbar
 from RenaBot.breh import upload_without_progress_bar
@@ -6,14 +7,20 @@ from telethon.utils import is_image,get_input_media
 import re
 import os
 import shutil
-from RenaBot.config import Admin
+import asyncio
 
 Batch=False
+
 AutoBatch=False
+
 usage= False
+
 global listed
 Real_Admin=int(Admin)
 listed=[Real_Admin]
+
+tasks=[]
+
 async def unlisted(event):
     await event.reply("Don't try to touch my master's property, fool. If you wish to use me, [fork here](https://github.com/Wolfy024/Renamer-Bot) and give the repo a star.")
     
@@ -64,7 +71,7 @@ async def st(event):
         await unlisted(event)
         return
     else:
-        await event.reply("What are you trying to achieve ?")
+        await event.reply("Yes, your bot is alive.")
     
 @C.on(events.NewMessage(pattern="/help"))
 async def hel(event):
@@ -75,14 +82,14 @@ async def hel(event):
         return
     else:
         await event.reply('''1) /setthumb - reply to an image and make it thumbnail.
-2)/setthumb to replace your previous thumb.
-3)/remthumb - Removes the last set thumb.
+2) /setthumb to replace your previous thumb.
+3) /remthumb - Removes the last set thumb.
 4) /rename - Renames and sets thumb for a single file. Reply to the file you wanna rename.
 5) /batch- Renames and sets thumb for multiple files. Reply to the first forwarded post.
 6) /autoforward -  use this followed by channel/group id and message from where u replied will be forwarded.
 7) /batch(number) - it will rename as many files as specified on number. eg - /batch5 (name of file). 5 Files will be renamed.
-8)/autoforward(number) -  use this followed by channel/group id and message from where u replied will be forwarded. eg- /autoforward5 will auto forward 5 next files.
-
+8) /autoforward(number) -  use this followed by channel/group id and message from where u replied will be forwarded. eg- /autoforward5 will auto forward 5 next files.
+9) /cancel - Cancel the ongoing task
 
 Only works for batchrename- Batch rename will add default counter in the end which starts from 1 if you want to start numbering from some other number. use 
 #zzz123
@@ -118,21 +125,29 @@ async def thumb(event):
         await event.reply("Image not found.")
     
 @C.on(events.NewMessage(pattern="/rename"))
-async def renamer(event):
+async def renamer_starter(event):
     sender=await event.get_sender()
     global listed
+    global usage
     if sender.id not in listed:
         await unlisted(event)
         return
     else:
         pass
-    global usage
     if usage==False:
        global userrr
        userrr=await event.get_sender()
     else:
         await event.reply(f"Currently, {userrr.first_name} is using the bot.")
         return
+    global tasks
+    task=asyncio.create_task(renamer(event))
+    tasks.append(task)
+   
+
+async def renamer(event):
+    chatwhere=event.chat_id
+    global usage
     usage=True    
     text=event.raw_text
     reply=await event.get_reply_message()
@@ -141,26 +156,31 @@ async def renamer(event):
     else:
         await event.reply("Reply to something to rename it.")
         usage= False
+        tasks.remove(task)
         return
     try:
         text=text.split(" ",maxsplit=1)[1]
     except IndexError:
          await event.reply("Yea, I should rename it as nothing then ?")
          usage= False
+         tasks.remove(task)
          return
     if text=="":
         await event.reply("Yea, I should rename it as nothing then ?")
         usage= False
+        tasks.remove(task)
         return
     if '.' in text:
         await event.reply("Sorry, we don't rename files with '.' in the renamed text. A precaution to prevent harm to your files.We automatically detect and put extensions.")
         usage= False
+        tasks.remove(task)
         return
     try:
         a=get_input_media(reply)
     except TypeError:
         await event.reply("No media found to rename.")
         usage= False
+        tasks.remove(task)
         return  
     await event.reply("Please wait while we rename your file.")
     download=await download_without_progressbar(client=C,msg=reply,down_location=f'{event.peer_id.user_id}\\')
@@ -170,42 +190,58 @@ async def renamer(event):
         await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
     else:
         await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}')
+    tasks.remove(task)
     usage=False
     try:
-        await event.reply("finished.")
+        await event.reply(" Process finished.")
+    except:
+        await C.send_message(chatwhere,"Process Finished.")
+    try:
         shutil.rmtree((f'{event.peer_id.user_id}\\'))
     except:
         pass
     
 ###TOO MUCH SHIT TO TAMPER WITH#####  END GAME
 @C.on(events.NewMessage(pattern="/batch"))
-async def batchrenamer(event):
+async auto_
+async def batch_starter(event):
     sender=await event.get_sender()
     global listed
+    global usage
     if sender.id not in listed:
         await unlisted(event)
         return
     else:
         pass
-    global usage
     if usage==False:
        global userrr
        userrr=await event.get_sender()
     else:
         await event.reply(f"Currently, {userrr.first_name} is using the bot.")
         return
+    global tasks
+    task=asyncio.create_task(batchrenamer(event))
+    tasks.append(task)
+   
+
+
+async def batchrenamer(event):
+    chatwhere=event.chat_id
+    global usage
     usage=True
     if event.is_reply:
         pass
     else:
         await event.reply("Reply to something to rename it.")
         usage= False
+        tasks.remove(task)
         return
     reply=await event.get_reply_message()
     text=event.raw_text
     if '.' in text:
         await event.reply("Sorry, we don't rename files with '.' in the renamed text. A precaution to prevent harm to your files.We automatically detect and put extensions.")
         usage= False
+        tasks.remove(task)
         return
     text=text.split(" ",1)
     try:
@@ -213,6 +249,7 @@ async def batchrenamer(event):
     except:
         await event.reply("Can't rename the files without any input.")
         usage= False
+        tasks.remove(task)
         return
     Amount_Fetcher=int(*re.findall(r'\d+', text[0]))
     if Amount_Fetcher==0:
@@ -229,6 +266,7 @@ async def batchrenamer(event):
         except:
             await event.reply("Enter a number after zzz not text.")
             usage= False
+            tasks.remove(task)
             return
     else:
         number=1
@@ -266,36 +304,45 @@ async def batchrenamer(event):
         else:
             await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f"{file_name} {number}{download_ext}")
         number=number+1
+    tasks.remove(task)
+    usage=False
     try:
         await event.reply("Process Finished.")
     except:
-        pass
-    usage=False
+        await C.send_message(chatwhere,"Process Finished.")
     try:
         shutil.rmtree((f'{event.peer_id.user_id}\\'))
     except:
         pass
         
 @C.on(events.NewMessage(pattern="/autoforward"))
-async def auto(event):
-    sender=await event.get_sender()
+async def auto_starter(event):
     global listed
     if sender.id not in listed:
         await unlisted(event)
         return
     else:
         pass
+    global tasks
+    task=asyncio.create_task(auto(event))
+    tasks.append(task)
+    
+async def auto(event):
+    chatwhere=event.chat_id
+    sender=await event.get_sender()
     if event.is_reply:
         pass
     else:
         await event.reply("Reply to a message, you can't make use of command like this.")
+        tasks.remove(task)
         return
     reply=await event.get_reply_message()
     text=event.raw_text
     try:
         _=text[1]
     except:
-        await event.reply("Can't forward to nothingness")  
+        await event.reply("Can't forward to nothingness")
+        tasks.remove(task)
         return
     text=text.split(" ")
     Amount_Fetcher=int(*re.findall(r'\d+', text[0]))
@@ -309,12 +356,15 @@ async def auto(event):
             a=await C.get_entity(int(text[1]))
         except Exception as e:
             await event.reply("Chat not found, Add me to the chat, so i can do something about it.")
+            tasks.remove(task)
+            return
         chat=a
     else:
         try:
             a=await C.get_permission(int(f"t.me/{text[1]}"))
         except:
             await event.reply("Chat not found, Add me to the chat, so i can do something about it.")
+            tasks.remove(task)
             return
         chat=a
     if AutoBatch==True:
@@ -327,7 +377,9 @@ async def auto(event):
         end=event.id
     for i in range(start,end):
         message=await C.get_messages(event.chat_id,ids=i)
-        await C.send_message(chat,message)   
+        await C.send_message(chat,message)
+    tasks.remove(task)
+    await C.send_message(chatwhere,'Done, All files forwarded !!')
             
         
 @C.on(events.NewMessage(pattern="/remthumb"))
@@ -345,4 +397,18 @@ async def rem(event):
         return               
     else:
         await event.reply("You haven't set a thumb.")
+        
+        
+@C.on(events.NewMessage(pattern="/cancel"))
+async def canceller(event):
+    chatwhere=event.chat_id
+    try:
+        for task in tasks:
+            task.cancel()
+    except:
+        await C.send_message(chatwhere,"No tasks are happening.")
+        return
+        
+        
+   
     
