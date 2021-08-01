@@ -1,7 +1,7 @@
 from RenaBot.config import client as C
 from RenaBot.config import Admin
 from telethon import events,Button
-from RenaBot.breh import download_without_progressbar
+from RenaBot.breh import download_with_progressbar
 from RenaBot.breh import upload_without_progress_bar
 from telethon.utils import is_image,get_input_media
 import re
@@ -151,14 +151,14 @@ async def renamer(event):
         usage= False
         tasks.remove(task)
         return  
-    await event.reply("Please wait while we rename your file.")
-    download=await download_without_progressbar(client=C,msg=reply,down_location=f'{event.peer_id.user_id}\\')
+    eh=await event.reply("Please wait while we rename your file.")
+    download=await download_with_progressbar(client=C,msg=reply,reply=eh,down_location=f'{event.peer_id.user_id}\\')
     download_ext='.'+download.split(".")[-1]
     await event.reply("Please wait while we upload your file.")
     if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
-        await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
+        await upload_without_progress_bar(client=C,reply=eh,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
     else:
-        await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}')
+        await upload_without_progress_bar(client=C,reply=eh,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}')
     tasks.remove(task)
     usage=False
     try:
