@@ -79,7 +79,6 @@ async def upload_with_progress_bar(client, reply, file_location, name=None, thum
         force_document=True,
         thumb=thumbnail
     )
-    await reply.edit("Finished uploading")
     return the_message
 
 async def download_without_progressbar(client, msg,down_location):
