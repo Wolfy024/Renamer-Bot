@@ -25,13 +25,13 @@ def human_readable_size(size, decimal_places=2):
         size /= 1024.0
     return f"{size:.{decimal_places}f} {unit}"
 
-async def download_with_progressbar(client, reply, msg,down_location):
+async def download_with_progressbar(client, reply, msg,down_location,edited):
     timer = Timer()
 
     async def progress_bar(downloaded_bytes, total_bytes):
         if timer.can_send():
             data = progress_bar_str(downloaded_bytes, total_bytes)
-            await reply.edit(f"Downloading...\n{data}")
+            edited.edit(f"Downloading...\n{data}")
 
     file = msg.document
     filename = msg.file.name
@@ -58,14 +58,14 @@ async def download_with_progressbar(client, reply, msg,down_location):
         )
     return download_location
 
-async def upload_with_progress_bar(client, reply, file_location, name=None, thumbnail=None):
+async def upload_with_progress_bar(client, reply, file_location, name=None, thumbnail=None,edited):
     timer = Timer()
     if name == None:
         name = file_location.split("/")[-1]
     async def progress_bar(downloaded_bytes, total_bytes):
         if timer.can_send():
             data = progress_bar_str(downloaded_bytes, total_bytes)
-            await reply.edit(f"Uploading...\n{data}")
+            edited.edit(f"Uploading...\n{data}")
 
     with open(file_location, "rb") as f:
         the_file = await upload_file(
