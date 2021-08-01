@@ -247,7 +247,7 @@ async def batchrenamer(event):
         else:
             await upload_with_progress_bar(client=C,edited=ed,file_location=download, name=f"{file_name} {number}{download_ext}")
         j=j+1
-        eh.edit(f"File {j}")
+        await eh.edit(f"File {j}")
         number=number+1
     tasks.clear()
     usage=False
