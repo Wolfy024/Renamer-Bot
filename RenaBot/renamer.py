@@ -157,7 +157,7 @@ async def renamer(event):
     await event.reply("Please wait while we upload your file.")
     if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
         await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
-   else:
+    else:
         await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}')
     tasks.remove(task)
     usage=False
