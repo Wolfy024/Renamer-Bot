@@ -161,6 +161,7 @@ async def renamer(event):
         await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}')
     tasks.remove(task)
     usage=False
+    await eh.edit("Finished.")
     try:
         await event.reply(" Process finished.")
     except:
@@ -250,6 +251,7 @@ async def batchrenamer(event):
         number=number+1
     tasks.remove(task)
     usage=False
+    await ed.edit("Finished.")
     try:
         await event.reply("Process Finished.")
     except:
