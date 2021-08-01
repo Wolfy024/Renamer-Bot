@@ -132,39 +132,36 @@ async def renamer(event):
     except IndexError:
          await event.reply("Yea, I should rename it as nothing then ?")
          usage= False
-         tasks.remove(task)
+         tasks.clear()
          return
     if text=="":
         await event.reply("Yea, I should rename it as nothing then ?")
         usage= False
-        tasks.remove(task)
+        tasks.clear()
         return
     if '.' in text:
         await event.reply("Sorry, we don't rename files with '.' in the renamed text. A precaution to prevent harm to your files.We automatically detect and put extensions.")
         usage= False
-        tasks.remove(task)
+        tasks.clear()
         return
     try:
         a=get_input_media(reply)
     except TypeError:
         await event.reply("No media found to rename.")
         usage= False
-        tasks.remove(task)
+        tasks.clear()
         return  
     eh=await event.reply("Please wait while we rename your file.")
     download=await download_with_progressbar(client=C,msg=reply,down_location=f'{event.peer_id.user_id}\\',edited=eh)
     download_ext='.'+download.split(".")[-1]
     await event.reply("Please wait while we upload your file.")
-    try:
-        if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
-            await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
-        else:
-            await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}')
-        tasks.remove(task)
-        usage=False
-        await eh.edit("Finished.")
-    except Exception as e:
-        print(e)
+    if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
+        await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
+    else:
+        await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}')
+    tasks.clear()
+    usage=False
+    await eh.edit("Finished.")
     try:
         await event.reply(" Process finished.")
     except:
@@ -185,7 +182,7 @@ async def batchrenamer(event):
     if '.' in text:
         await event.reply("Sorry, we don't rename files with '.' in the renamed text. A precaution to prevent harm to your files.We automatically detect and put extensions.")
         usage= False
-        tasks.remove(task)
+        tasks.clear()
         return
     text=text.split(" ",1)
     try:
@@ -193,7 +190,7 @@ async def batchrenamer(event):
     except:
         await event.reply("Can't rename the files without any input.")
         usage= False
-        tasks.remove(task)
+        tasks.clear()
         return
     Amount_Fetcher=int(*re.findall(r'\d+', text[0]))
     if Amount_Fetcher==0:
@@ -210,7 +207,7 @@ async def batchrenamer(event):
         except:
             await event.reply("Enter a number after zzz not text.")
             usage= False
-            tasks.remove(task)
+            tasks.clear()
             return
     else:
         number=1
@@ -252,7 +249,7 @@ async def batchrenamer(event):
         j=j+1
         eh.edit(f"File {j}")
         number=number+1
-    tasks.remove(task)
+    tasks.clear()
     usage=False
     await ed.edit("Finished.")
     try:
@@ -273,7 +270,7 @@ async def auto(event):
         pass
     else:
         await event.reply("Reply to a message, you can't make use of command like this.")
-        tasks.remove(task)
+        tasks.clear()
         return
     reply=await event.get_reply_message()
     text=event.raw_text
@@ -281,7 +278,7 @@ async def auto(event):
         _=text[1]
     except:
         await event.reply("Can't forward to nothingness")
-        tasks.remove(task)
+        tasks.clear()
         return
     text=text.split(" ")
     Amount_Fetcher=int(*re.findall(r'\d+', text[0]))
@@ -295,7 +292,7 @@ async def auto(event):
             a=await C.get_entity(int(text[1]))
         except Exception as e:
             await event.reply("Chat not found, Add me to the chat, so i can do something about it.")
-            tasks.remove(task)
+            tasks.clear()
             return
         chat=a
     else:
@@ -303,7 +300,7 @@ async def auto(event):
             a=await C.get_permission(int(f"t.me/{text[1]}"))
         except:
             await event.reply("Chat not found, Add me to the chat, so i can do something about it.")
-            tasks.remove(task)
+            tasks.clear()
             return
         chat=a
     if AutoBatch==True:
@@ -317,7 +314,7 @@ async def auto(event):
     for i in range(start,end):
         message=await C.get_messages(event.chat_id,ids=i)
         await C.send_message(chat,message)
-    tasks.remove(task)
+    tasks.clear()
     await C.send_message(chatwhere,'Done, All files forwarded !!')
             
         
@@ -368,6 +365,7 @@ async def renamer_starter(event):
 @C.on(events.NewMessage(pattern="/autoforward"))
 async def auto_starter(event):
     global listed
+    sender=await event.get_sender()
     if sender.id not in listed:
         await unlisted(event)
         return
@@ -417,7 +415,7 @@ async def canceller(event):
             await asyncio.sleep(0.5)
         except:
             pass
-        tasks.remove(task)
+        tasks.clear()
         await C.send_message(chatwhere,"Task cancelled successfully.")
     except:
         await C.send_message(chatwhere,"No tasks are happening.")
