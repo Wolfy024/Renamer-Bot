@@ -25,7 +25,7 @@ def human_readable_size(size, decimal_places=2):
         size /= 1024.0
     return f"{size:.{decimal_places}f} {unit}"
 
-async def download_with_progressbar(client, reply, msg,down_location,edited):
+async def download_with_progressbar(client, msg,down_location,edited):
     timer = Timer()
 
     async def progress_bar(downloaded_bytes, total_bytes):
