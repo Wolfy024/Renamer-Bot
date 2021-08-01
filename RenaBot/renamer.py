@@ -234,7 +234,7 @@ async def batchrenamer(event):
         if i==start:
             await event.reply("Please sit back and relax. This might take a while...")
             eh=await C.send_message(chatwhere,f"File {j}")
-            ed=await C.send_message(chatwhere"Progress bar initiating.")
+            ed=await C.send_message(chatwhere,"Progress bar initiating.")
         else:
             pass
         download=await download_with_progressbar(client=C,msg=message,down_location=f"{event.peer_id.user_id}\\",edited=ed)
