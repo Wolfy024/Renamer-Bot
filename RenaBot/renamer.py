@@ -1,7 +1,7 @@
 from RenaBot.config import client as C
 from RenaBot.config import Admin
 from telethon import events,Button
-from RenaBot.breh import download_with_progressbar
+from RenaBot.breh import download_with_progress_bar
 from RenaBot.breh import upload_with_progress_bar
 from telethon.utils import is_image,get_input_media
 import re
