@@ -25,7 +25,7 @@ def human_readable_size(size, decimal_places=2):
         size /= 1024.0
     return f"{size:.{decimal_places}f} {unit}"
 
-async def download_with_progressbar(client, reply, msg):
+async def download_with_progressbar(client, reply, msg,down_location):
     timer = Timer()
 
     async def progress_bar(downloaded_bytes, total_bytes):
@@ -35,7 +35,15 @@ async def download_with_progressbar(client, reply, msg):
 
     file = msg.document
     filename = msg.file.name
-    dir = f"downloads/"
+     dir = f"{down_location}"
+    try:
+        if os.path.exists(dir):
+            pass
+        else:
+            os.mkdir(dir)
+    except SyntaxError:
+        print("Write the path correctly.") 
+        raise SyntaxError
     if not filename:
         filename = (
             "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
@@ -48,7 +56,6 @@ async def download_with_progressbar(client, reply, msg):
             out=f,
             progress_callback=progress_bar
         )
-    await reply.edit("Finished downloading")
     return download_location
 
 async def upload_with_progress_bar(client, reply, file_location, name=None, thumbnail=None):
