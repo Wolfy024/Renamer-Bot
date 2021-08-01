@@ -406,7 +406,7 @@ async def canceller(event):
         await C.send_message(chatwhere,"Task cancelled successfully.")
     except:
         await C.send_message(chatwhere,"No tasks are happening.")
-        return
+     
         
         
    
