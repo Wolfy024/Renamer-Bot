@@ -1,6 +1,6 @@
 # Updates to be added :
-Cancellation Feature <br>
-Downloading / Uploading Progress
+Cancellation Feature (Added) <br>
+Downloading / Uploading Progress (Added)
 
 
 
@@ -29,8 +29,7 @@ If you put unexpected items in the input, you will get unexpected output. Don't 
 # Known Issues
 Can't Support Batch rename with multiple users as of now
 
-# Note
-Not Stable (Use at your Own Risk)
+
 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot)
