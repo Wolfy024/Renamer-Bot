@@ -172,6 +172,7 @@ async def renamer(event):
         await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}')
     usage=False
     try:
+        await event.reply("finished.)
         shutil.rmtree((f'{event.peer_id.user_id}\\'))
     except:
         pass
