@@ -31,7 +31,7 @@ async def download_with_progressbar(client, msg,down_location,edited):
     async def progress_bar(downloaded_bytes, total_bytes):
         if timer.can_send():
             data = progress_bar_str(downloaded_bytes, total_bytes)
-            edited.edit(f"Downloading...\n{data}")
+            await edited.edit(f"Downloading...\n{data}")
 
     file = msg.document
     filename = msg.file.name
@@ -65,7 +65,7 @@ async def upload_with_progress_bar(client,edited, file_location, name=None, thum
     async def progress_bar(downloaded_bytes, total_bytes):
         if timer.can_send():
             data = progress_bar_str(downloaded_bytes, total_bytes)
-            edited.edit(f"Uploading...\n{data}")
+            await edited.edit(f"Uploading...\n{data}")
 
     with open(file_location, "rb") as f:
         the_file = await upload_file(
