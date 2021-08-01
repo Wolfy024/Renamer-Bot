@@ -151,12 +151,12 @@ async def renamer(event):
         usage= False
         tasks.clear()
         return  
-    eh=await event.reply("Please wait while we rename your file.")
+    replyedit_message=await event.reply("Please wait while we rename your file.")
     download=await download_with_progressbar(client=C,msg=reply,down_location=f'{event.peer_id.user_id}\\',edited=eh)
     download_ext='.'+download.split(".")[-1]
     await event.reply("Please wait while we upload your file.")
     if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
-        await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
+        await upload_with_progress_bar(client=C,edited=replyedit_messafe,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
     else:
         await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}')
     tasks.clear()
@@ -233,8 +233,8 @@ async def batchrenamer(event):
             continue
         if i==start:
             await event.reply("Please sit back and relax. This might take a while...")
-            eh=await C.send_message(chatwhere,f"File {j}")
-            ed=await C.send_message(chatwhere,"Progress bar initiating.")
+            replyedit_message=await C.send_message(chatwhere,f"File {j}")
+            probar_edit=await C.send_message(chatwhere,"Progress bar initiating.")
         else:
             pass
         download=await download_with_progressbar(client=C,msg=message,down_location=f"{event.peer_id.user_id}\\",edited=ed)
@@ -243,15 +243,15 @@ async def batchrenamer(event):
         except:
             download_ext=""
         if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
-            await upload_with_progress_bar(client=C,edited=ed,file_location=download, name=f"{file_name} {number}{download_ext}",thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
+            await upload_with_progress_bar(client=C,edited=probar_edit,file_location=download, name=f"{file_name} {number}{download_ext}",thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
         else:
-            await upload_with_progress_bar(client=C,edited=ed,file_location=download, name=f"{file_name} {number}{download_ext}")
+            await upload_with_progress_bar(client=C,edited=probar_edit,file_location=download, name=f"{file_name} {number}{download_ext}")
         j=j+1
         await eh.edit(f"File {j}")
         number=number+1
     tasks.clear()
     usage=False
-    await ed.edit("Finished.")
+    await  replyedit_message.edit("Finished.")
     try:
         await event.reply("Process Finished.")
     except:
