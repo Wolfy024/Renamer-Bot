@@ -155,13 +155,16 @@ async def renamer(event):
     download=await download_with_progressbar(client=C,msg=reply,down_location=f'{event.peer_id.user_id}\\',edited=eh)
     download_ext='.'+download.split(".")[-1]
     await event.reply("Please wait while we upload your file.")
-    if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
-        await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
-    else:
-        await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}')
-    tasks.remove(task)
-    usage=False
-    await eh.edit("Finished.")
+    try:
+        if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
+            await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
+        else:
+            await upload_with_progress_bar(client=C,edited=eh,file_location=download, name=f'{text}{download_ext}')
+        tasks.remove(task)
+        usage=False
+        await eh.edit("Finished.")
+    except Exception as e:
+        print(e)
     try:
         await event.reply(" Process finished.")
     except:
