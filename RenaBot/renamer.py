@@ -397,9 +397,13 @@ async def rem(event):
 @C.on(events.NewMessage(pattern="/cancel"))
 async def canceller(event):
     chatwhere=event.chat_id
+    global usage 
+    usage=False
     try:
         for task in tasks:
             task.cancel()
+        tasks.remove(task)
+        await C.send_message(chatwhere,"Task cancelled successfully.")
     except:
         await C.send_message(chatwhere,"No tasks are happening.")
         return
