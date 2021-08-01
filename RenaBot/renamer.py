@@ -156,9 +156,9 @@ async def renamer(event):
     download_ext='.'+download.split(".")[-1]
     await event.reply("Please wait while we upload your file.")
     if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
-        await upload_without_progress_bar(client=C,reply=eh,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
+        await upload_without_progress_bar(client=C,edited=eh,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}',thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
     else:
-        await upload_without_progress_bar(client=C,reply=eh,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}')
+        await upload_without_progress_bar(client=C,edited=eh,entity=event.chat_id,file_location=download, name=f'{text}{download_ext}')
     tasks.remove(task)
     usage=False
     try:
@@ -220,7 +220,7 @@ async def batchrenamer(event):
     elif Batch==False:
         start=reply.id
         end=event.id
-    
+    j=1
     for i in range(start,end):
         try:
             message=await C.get_messages(event.chat_id,ids=i)
@@ -232,17 +232,21 @@ async def batchrenamer(event):
             continue
         if i==start:
             await event.reply("Please sit back and relax. This might take a while...")
+            eh=await event.reply(f"File {j}")
+            ed=await event.reply("Progress bar initiating.")
         else:
             pass
-        download=await download_without_progressbar(client=C,msg=message,down_location=f"{event.peer_id.user_id}\\")
+        download=await download_with_progressbar(client=C,msg=message,down_location=f"{event.peer_id.user_id}\\",edited=ed)
         try:
             download_ext='.'+download.split(".")[-1]
         except:
             download_ext=""
         if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
-            await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f"{file_name} {number}{download_ext}",thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
+            await upload_with_progress_bar(client=C,edited=ed,entity=event.chat_id,file_location=download, name=f"{file_name} {number}{download_ext}",thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
         else:
-            await upload_without_progress_bar(client=C,entity=event.chat_id,file_location=download, name=f"{file_name} {number}{download_ext}")
+            await upload_with_progress_bar(client=C,edited=ed,entity=event.chat_id,file_location=download, name=f"{file_name} {number}{download_ext}")
+        j=j+1
+        eh.edit(f"File {j}")
         number=number+1
     tasks.remove(task)
     usage=False
