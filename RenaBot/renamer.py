@@ -411,6 +411,7 @@ async def canceller(event):
     usage=False
     if len(tasks)==0:
         await event.reply("No tasks are happening.")
+        return
     try:
         for task in tasks:
             task.cancel()
