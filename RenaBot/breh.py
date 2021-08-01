@@ -58,7 +58,7 @@ async def download_with_progressbar(client, msg,down_location,edited):
         )
     return download_location
 
-async def upload_with_progress_bar(client, file_location, name=None, thumbnail=None,edited):
+async def upload_with_progress_bar(client,edited, file_location, name=None, thumbnail=None):
     timer = Timer()
     if name == None:
         name = file_location.split("/")[-1]
