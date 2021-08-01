@@ -152,7 +152,7 @@ async def renamer(event):
         tasks.remove(task)
         return  
     eh=await event.reply("Please wait while we rename your file.")
-    download=await download_with_progressbar(client=C,msg=reply,reply=eh,down_location=f'{event.peer_id.user_id}\\')
+    download=await download_with_progressbar(client=C,msg=reply,down_location=f'{event.peer_id.user_id}\\',edited=eh)
     download_ext='.'+download.split(".")[-1]
     await event.reply("Please wait while we upload your file.")
     if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
