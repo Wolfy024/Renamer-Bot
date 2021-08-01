@@ -8,19 +8,15 @@ import re
 import os
 import shutil
 import asyncio
-
+#################### VARS ###############
 Batch=False
-
 AutoBatch=False
-
 usage= False
-
 global listed
 Real_Admin=int(Admin)
 listed=[Real_Admin]
-
 tasks=[]
-
+#######################################
 async def unlisted(event):
     await event.reply("Don't try to touch my master's property, fool. If you wish to use me, [fork here](https://github.com/Wolfy024/Renamer-Bot) and give the repo a star.")
     
@@ -124,31 +120,6 @@ async def thumb(event):
     else:
         await event.reply("Image not found.")
     
-@C.on(events.NewMessage(pattern="/rename"))
-async def renamer_starter(event):
-    sender=await event.get_sender()
-    global listed
-    global usage
-    if event.is_reply:
-        pass
-    else:
-        await event.reply("Reply to something to rename it.")
-        return
-    if sender.id not in listed:
-        await unlisted(event)
-        return
-    else:
-        pass
-    if usage==False:
-       global userrr
-       userrr=await event.get_sender()
-    else:
-        await event.reply(f"Currently, {userrr.first_name} is using the bot.")
-        return
-    global tasks
-    task=asyncio.create_task(renamer(event))
-    tasks.append(task)
-   
 
 async def renamer(event):
     chatwhere=event.chat_id
@@ -199,32 +170,6 @@ async def renamer(event):
     except:
         pass
     
-###TOO MUCH SHIT TO TAMPER WITH#####  END GAME
-@C.on(events.NewMessage(pattern="/batch"))
-async def batch_starter(event):
-    sender=await event.get_sender()
-    global listed
-    global usage
-    if event.is_reply:
-        pass
-    else:
-        await event.reply("Reply to something to rename it.")
-        return
-    if sender.id not in listed:
-        await unlisted(event)
-        return
-    else:
-        pass
-    if usage==False:
-       global userrr
-       userrr=await event.get_sender()
-    else:
-        await event.reply(f"Currently, {userrr.first_name} is using the bot.")
-        return
-    global tasks
-    task=asyncio.create_task(batchrenamer(event))
-    tasks.append(task)
-   
 
 
 async def batchrenamer(event):
@@ -310,17 +255,7 @@ async def batchrenamer(event):
     except:
         pass
         
-@C.on(events.NewMessage(pattern="/autoforward"))
-async def auto_starter(event):
-    global listed
-    if sender.id not in listed:
-        await unlisted(event)
-        return
-    else:
-        pass
-    global tasks
-    task=asyncio.create_task(auto(event))
-    tasks.append(task)
+
     
 async def auto(event):
     chatwhere=event.chat_id
@@ -392,7 +327,74 @@ async def rem(event):
         return               
     else:
         await event.reply("You haven't set a thumb.")
-        
+ 
+
+
+##################### MAKING TASKS############################3
+@C.on(events.NewMessage(pattern="/rename"))
+async def renamer_starter(event):
+    sender=await event.get_sender()
+    global listed
+    global usage
+    if event.is_reply:
+        pass
+    else:
+        await event.reply("Reply to something to rename it.")
+        return
+    if sender.id not in listed:
+        await unlisted(event)
+        return
+    else:
+        pass
+    if usage==False:
+       global userrr
+       userrr=await event.get_sender()
+    else:
+        await event.reply(f"Currently, {userrr.first_name} is using the bot.")
+        return
+    global tasks
+    task=asyncio.create_task(renamer(event))
+    tasks.append(task)
+
+@C.on(events.NewMessage(pattern="/autoforward"))
+async def auto_starter(event):
+    global listed
+    if sender.id not in listed:
+        await unlisted(event)
+        return
+    else:
+        pass
+    global tasks
+    task=asyncio.create_task(auto(event))
+    tasks.append(task)
+
+    
+    
+@C.on(events.NewMessage(pattern="/batch"))
+async def batch_starter(event):
+    sender=await event.get_sender()
+    global listed
+    global usage
+    if event.is_reply:
+        pass
+    else:
+        await event.reply("Reply to something to rename it.")
+        return
+    if sender.id not in listed:
+        await unlisted(event)
+        return
+    else:
+        pass
+    if usage==False:
+       global userrr
+       userrr=await event.get_sender()
+    else:
+        await event.reply(f"Currently, {userrr.first_name} is using the bot.")
+        return
+    global tasks
+    task=asyncio.create_task(batchrenamer(event))
+    tasks.append(task)
+   
         
 @C.on(events.NewMessage(pattern="/cancel"))
 async def canceller(event):
