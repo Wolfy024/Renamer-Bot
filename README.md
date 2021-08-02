@@ -20,6 +20,7 @@ I don't know advanced techniques to handle it all simultaneously.
 /add to add other admins.
 You have to provide the main admin user id, when you are entering the environment variable.
 If you put unexpected items in the input, you will get unexpected output. Don't be surprised.
+Everytime you restart the bot, you have to re-add everyone. The code maks use of a local list and not a database.
 
 
 
