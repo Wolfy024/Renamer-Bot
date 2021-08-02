@@ -1,8 +1,8 @@
 # Updates to be added :
 Cancellation Feature (Added) <br>
-Downloading / Uploading Progress (Added)
-
-
+Downloading / Uploading Progress (Added)<br>
+Batch Renaming (Added)<br>
+Auto forwarding to Channel (Added)
 
 # Renamer-Bot
 <p align="center" > <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Wolfy024/Renamer-Bot?style=plastic">
