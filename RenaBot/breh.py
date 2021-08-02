@@ -4,8 +4,8 @@ import time
 import datetime as dt
 import os
 sys.path.insert(0, f"{pathlib.Path(__file__).parent.resolve()}")
-
 from FastTelethon import upload_file, download_file
+#Fun
 
 class Timer:
     def __init__(self, time_between=5):
