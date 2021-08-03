@@ -1,4 +1,5 @@
-# Telegram Bot<br>
+# Telegram Bot<br
+Only works in PM, Group supportto be added later. It will respond in group but will break. If you start something by mistake , make sure to use cancel command.
 # Updates to be added :
 <del>Cancellation Feature</del> (Added) <br>
 <del>Downloading / Uploading Progress</del> (Added)<br>
