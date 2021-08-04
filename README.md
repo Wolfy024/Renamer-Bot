@@ -39,10 +39,10 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 ## Deploying
 <details>
  <summary> Deploy on Heroku </summary>
-Fill the VARS correctly and turn on the dyno worker.
- [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot)
+Fill the VARS correctly and turn on the dyno worker
+
+<p><a href='https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot' target='_blank'><img height='30' style='border:0px;height:0px;' src='https://www.herokucdn.com/deploy/button.svg' border='0' alt='Deploy On Hroku' /></a></p>
 </details>
-<p><a href='https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot' target='_blank'><img height='50' style='border:0px;height:0px;' src='https://www.herokucdn.com/deploy/button.svg' border='0' alt='Deploy On Hroku' /></a></p>
 
 ## Known Issues
 Can't Support multiple users as of now.
