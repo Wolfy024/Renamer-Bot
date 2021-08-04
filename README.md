@@ -23,6 +23,7 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 | :---        |    :---     |
 | /start      | Confirm if the bot is alive. |
 | /help       | Basic overview |
+| /cancel       | Cancels the ongoing task |
 | /setthumb   | Set thumbnail | 
 | /remthumb   | Remove thumbnail | 
 | /rename `name to be used without extension`| Renames the replied file |
