@@ -19,8 +19,8 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 
 ## Commands
 
-| Syntax      | Description | 
-| :---        |    :----:   |
+| Commands    | Description | 
+| :---        |    :---     |
 | /start      | Confirm if the bot is alive. |
 | /help       | Basic overview |
 | /setthumb   | Set thumbnail | 
@@ -40,4 +40,4 @@ Fill the VARS correctly and turn on the dyno worker.
 </details>
 
 ## Known Issues
-Can't Support multiple users as of now
+Can't Support multiple users as of now.
