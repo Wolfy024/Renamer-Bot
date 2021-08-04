@@ -1,9 +1,3 @@
-# Updates to be added :
-<del>Cancellation Feature</del> (Added) <br>
-<del>Downloading / Uploading Progress</del> (Added)<br>
-<del>Batch Renaming</del> (Added)<br>
-<del>Auto forwarding to Channel</del> (Added)
-
 ## Renamer-Bot
 <p align="center" > <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Wolfy024/Renamer-Bot?style=plastic">
  <a> <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr-raw/Wolfy024/Renamer-Bot?color=blue&label=Open%20PRs"> <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/Wolfy024/Renamer-Bot?color=blue&label=Closed%20PRs"> </a> </p>
@@ -42,15 +36,15 @@ autoforward `channel id with - ` - forward to given channel (not to  mention bot
 | /rename `name to be used without extension`| Renames the replied file |
 | /batch `name to be used without extension` | Renames batch of files from the file replied till last with automatic numbering at its end |
 | /autoforward `channel id with - ` | Forward to given channel (not to  mention bot should be in the given channel) |
-| /add `user ID`  | adds user to whitelist (_Everytime you restart the bot, you have to re-add everyone. The code maks use of a local list and not a database._)
-|
+| /add `user ID`  | adds user to whitelist (_Everytime you restart the bot, you have to re-add everyone. The code maks use of a local list and not a database._)|
+
 
 
 ## Deploy To Heroku 
 <details>
- <summary> Deploy </summary>
+ <summary> **Deploy** </summary>
 Fill the VARS correctly and turn on the dyno worker.
- [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot)
 </details>
 
 ## Known Issues
