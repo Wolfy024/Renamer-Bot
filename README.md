@@ -28,7 +28,7 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 | /rename `name to be used without extension`| Renames the replied file |
 | /batch `name to be used without extension` | Renames batch of files from the file replied till last with automatic numbering at its end |
 | /batch(number) `name to be used without extension` | Renames batch of files from the file specified till the number of messages given |
-| #zzz`followed by a number at the end of rename`| For custom numbering.
+| #zzz`followed by a number at the end of rename`| For custom numbering. (only works with both /batch commands.)
 | /autoforward `channel id with - ` | Forward to given channel (not to  mention bot should be in the given channel) |
 | /autoforward(number)  `channel id with - ` | Forward to given channel from the specified file till the number of messages given (not to  mention bot should be in the given channel) |
 | /add `user ID`  | Adds user to whitelist (_Everytime you restart the bot, you have to re-add everyone. The code maks use of a local list and not a database._)|
