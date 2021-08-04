@@ -28,7 +28,7 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 | /rename `name to be used without extension`| Renames the replied file |
 | /batch `name to be used without extension` | Renames batch of files from the file replied till last with automatic numbering at its end |
 | /autoforward `channel id with - ` | Forward to given channel (not to  mention bot should be in the given channel) |
-| /add `user ID`  | adds user to whitelist (_Everytime you restart the bot, you have to re-add everyone. The code maks use of a local list and not a database._)|
+| /add `user ID`  | Adds user to whitelist (_Everytime you restart the bot, you have to re-add everyone. The code maks use of a local list and not a database._)|
 
 
 
@@ -36,6 +36,7 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 <details>
  <summary> Deploy </summary>
 Fill the VARS correctly and turn on the dyno worker.
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot)
 </details>
 
