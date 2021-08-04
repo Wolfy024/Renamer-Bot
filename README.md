@@ -30,28 +30,28 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 /setthumb - Set thumbnail
 /remthumb - Remove thumbnail
 /rename `name to be used without extension` - single rename
-/batch `name to be used without extension` - Renames batch of files from the file replied till last with automatic numbering at its end 
+/batch `name to be used without extension` - 
 autoforward `channel id with - ` - forward to given channel (not to  mention bot should be in the channel)
-/add `user ID` - adds user to whitelist (_Everytime you restart the bot, you have to re-add everyone. The code maks use of a local list and not a database._)
-
-| Syntax      | Description | Test Text     |
-| :---        |    :----:   |          ---: |
-| /start      | Title       | Here's this   |
-| /help       | Text        | And more      |
-| /setthumb   | Text        | And more      |
-| /remthumb   | Text        | And more      |
-| /rename `name to be used without extension`| Text        | And more      |
-| /batch      | Text        | And more      |
-| /autoforward| Text        | And more      |
-| /add        | Text        | And more      |
-
-
-
-# Known Issues
-Can't Support Batch rename with multiple users as of now
+/add `user ID` - 
+| Syntax      | Description | 
+| :---        |    :----:   |
+| /start      | Confirm if the bot is alive. |
+| /help       | Basic overview |
+| /setthumb   | Set thumbnail | 
+| /remthumb   | Remove thumbnail | 
+| /rename `name to be used without extension`| Renames the replied file |
+| /batch `name to be used without extension` | Renames batch of files from the file replied till last with automatic numbering at its end |
+| /autoforward `channel id with - ` | Forward to given channel (not to  mention bot should be in the given channel) |
+| /add `user ID`  | adds user to whitelist (_Everytime you restart the bot, you have to re-add everyone. The code maks use of a local list and not a database._)
+|
 
 
+## Deploy To Heroku 
+<details>
+ <summary> Deploy </summary>
+Fill the VARS correctly and turn on the dyno worker.
+ [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot)
+</details>
 
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot)
-
+## Known Issues
+Can't Support multiple users as of now
