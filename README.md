@@ -19,14 +19,6 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 
 ## Commands
 
-/start - Confirm if the bot is alive.
-/help - Basic overview
-/setthumb - Set thumbnail
-/remthumb - Remove thumbnail
-/rename `name to be used without extension` - single rename
-/batch `name to be used without extension` - 
-autoforward `channel id with - ` - forward to given channel (not to  mention bot should be in the channel)
-/add `user ID` - 
 | Syntax      | Description | 
 | :---        |    :----:   |
 | /start      | Confirm if the bot is alive. |
@@ -42,7 +34,7 @@ autoforward `channel id with - ` - forward to given channel (not to  mention bot
 
 ## Deploy To Heroku 
 <details>
- <summary> **Deploy** </summary>
+ <summary> Deploy </summary>
 Fill the VARS correctly and turn on the dyno worker.
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Wolfy024/Renamer-Bot)
 </details>
