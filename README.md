@@ -16,7 +16,8 @@ This is aimed to be a private renamer bot for you and your admin community.Only 
 - [x] Downloading / Uploading Progress
 - [x] Batch Renaming
 - [x] Auto forwarding to Channel
-
+- [ ] Adding View Thumbnail
+- [ ] Adding upload mode
 
 ## Commands
 
