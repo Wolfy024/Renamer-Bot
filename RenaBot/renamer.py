@@ -1,5 +1,5 @@
 from RenaBot.config import client as C
-from RenaBot.config import Admin
+from RenaBot.config import OWNER , ADMINS
 from telethon import events,Button
 from RenaBot.breh import download_with_progressbar
 from RenaBot.breh import upload_with_progress_bar
@@ -9,21 +9,19 @@ import os
 import shutil
 import asyncio
 #################### VARS ###############
-Batch=False
-AutoBatch=False
-usage= False
-global listed
-Real_Admin=int(Admin)
-listed=[Real_Admin]
-tasks=[]
+Batch = False
+AutoBatch = False
+usage = False
+OWNER = int(OWNER)
+listed = [ADMINS]
+tasks = []
 #######################################
 async def unlisted(event):
     await event.reply("Don't try to touch my master's property, fool. If you wish to use me, [fork here](https://github.com/Wolfy024/Renamer-Bot) and give the repo a star.")
     
     
-@C.on(events.NewMessage(pattern="/add",from_users=Real_Admin))
+@C.on(events.NewMessage(pattern="/add",from_users=OWNER))
 async def adder(event):
-    global listed
     if event.is_reply:
         pass
     else:
@@ -32,15 +30,15 @@ async def adder(event):
     addition=await reply.get_sender()
     try:
         if addition.id in listed:
-            await event.reply('This user is already whitelisted.')
+            await event.reply(f'{addition.first_name} is already an admin I know')
             return
         else:
             listed.append(addition.id)
-        await event.reply("The user has been added to whitelist.")
+        await event.reply(f'{addition.first_name} Nice to meet you')
     except:
         await event.reply("I don't know how but it seems like that account is deleted.")
      
-@C.on(events.NewMessage(pattern="/remove",from_users=Real_Admin))
+@C.on(events.NewMessage(pattern="/remove",from_users=OWNER))
 async def remover(event):
     global listed
     if event.is_reply:
@@ -52,9 +50,9 @@ async def remover(event):
     try:
         if addition.id in listed:
             listed.remove(addition.id)
-            await event.reply("The user has been added to blacklist.")
+            await event.reply(f"{ addition.first_name} is dead to me now :)")
         else:
-            await event.reply("User is already blacklisted.")
+            await event.reply(f"I never knew about {addition.first_name}")
             return
     except:
         await event.reply("I don't know how but it seems like that account is deleted.")
@@ -62,7 +60,6 @@ async def remover(event):
 @C.on(events.NewMessage(pattern="/start"))
 async def st(event):
     sender=await event.get_sender()
-    global listed
     if sender.id not in listed:
         await unlisted(event)
         return
@@ -72,7 +69,6 @@ async def st(event):
 @C.on(events.NewMessage(pattern="/help"))
 async def hel(event):
     sender=await event.get_sender()
-    global listed
     if sender.id not in listed:
         await unlisted(event)
         return
@@ -95,7 +91,6 @@ IMPORTANT- DO NOT PROVIDE FILE EXTENSION !!! IT WILL AUTO DETECT.''')
 @C.on(events.NewMessage(pattern="/setthumb"))
 async def thumb(event):
     sender=await event.get_sender()
-    global listed
     if sender.id not in listed:
         await unlisted(event)
         return
@@ -314,7 +309,11 @@ async def auto(event):
 @C.on(events.NewMessage(pattern="/remthumb"))
 async def rem(event):
     sender=await event.get_sender()
-    global listed
+    if sender.id not in listed:
+        await unlisted(event)
+        return
+    else:
+        pass
     if sender.id not in listed:
         await unlisted(event)
         return
@@ -333,7 +332,11 @@ async def rem(event):
 @C.on(events.NewMessage(pattern="/rename"))
 async def renamer_starter(event):
     sender=await event.get_sender()
-    global listed
+    if sender.id not in listed:
+        await unlisted(event)
+        return
+    else:
+        pass
     global usage
     if event.is_reply:
         pass
@@ -357,7 +360,6 @@ async def renamer_starter(event):
 
 @C.on(events.NewMessage(pattern="/autoforward"))
 async def auto_starter(event):
-    global listed
     sender=await event.get_sender()
     if sender.id not in listed:
         await unlisted(event)
@@ -372,8 +374,12 @@ async def auto_starter(event):
     
 @C.on(events.NewMessage(pattern="/batch"))
 async def batch_starter(event):
-    sender=await event.get_sender()
-    global listed
+    sender = await event.get_sender()
+    if sender.id not in listed:
+        await unlisted(event)
+        return
+    else:
+        pass
     global usage
     if event.is_reply:
         pass
@@ -398,6 +404,12 @@ async def batch_starter(event):
         
 @C.on(events.NewMessage(pattern="/cancel"))
 async def canceller(event):
+    sender = await event.get_sender()
+    if sender.id not in listed:
+        await unlisted(event)
+        return
+    else:
+        pass
     chatwhere=event.chat_id
     global usage
     global tasks
@@ -417,7 +429,3 @@ async def canceller(event):
     except:
         await C.send_message(chatwhere,"Some error occured.")
      
-        
-        
-   
-    
