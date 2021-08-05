@@ -17,11 +17,15 @@
           "description": "Your bot token, as a string. Get it from @BotFather on telegram",
           "value": ""
         },
-        "ADMIN_ID" : {
-            "description": "Get your own ID anyhow you can, easy way is to use /id with a well recognised bot on telegram.",
+        "OWNER" : {
+            "description": "ID of owner Example- 12345678",
             "value": ""
+        },
+         "ADMINS": {
+          "description": "ID of users whom you want to use your bot , seprate them by space if more than one ",
+          "value": ""
         }},
-        "buildpacks": [{"url": "heroku/python"}],
+  "buildpacks": [{"url": "heroku/python"}],
         "formation": {
             "worker": {
             "quantity": 1,
