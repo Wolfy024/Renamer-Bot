@@ -2,7 +2,8 @@
 <p align="center" > <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Wolfy024/Renamer-Bot?style=plastic">
  <a> <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr-raw/Wolfy024/Renamer-Bot?color=blue&label=Open%20PRs"> <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/Wolfy024/Renamer-Bot?color=blue&label=Closed%20PRs"> </a> </p>
 
-<p align="center" > <img alt="GitHub forks" src="https://img.shields.io/github/forks/Wolfy024/Renamer-Bot?logoColor=blue&style=social"> </p>
+<p align="center" > <img alt="GitHub forks" src="https://img.shields.io/github/forks/Wolfy024/Renamer-Bot?label=%F0%9F%8D%B4Forks&logoColor=blue&style=social">
+<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/wolfy024/Renamer-Bot?label=%E2%AD%90%EF%B8%8FStars&logoColor=blue&style=social"> </p>
 
 ## Basic Overview
 
@@ -46,3 +47,7 @@ Fill the VARS correctly and turn on the dyno worker
 
 ## Known Issues
 Can't Support multiple users as of now.
+
+## CREDITS
+★ [Wolfy](https://github.com/Wolfy024)\
+☆ [Shidou](https://github.com/ShidouDairenji)
