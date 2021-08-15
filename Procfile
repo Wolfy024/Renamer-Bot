@@ -1,2 +1,2 @@
 worker: python3 -m RenaBot
-ps:scale web=1 worker=1
+ps:scale worker=1
