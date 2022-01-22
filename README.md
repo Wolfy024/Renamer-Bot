@@ -50,4 +50,5 @@ Can't Support multiple users as of now.
 
 ## CREDITS
 ★ [Wolfy](https://github.com/Wolfy024)\
-☆ [Shidou](https://github.com/ShidouDairenji)
+☆ [Shidou](https://github.com/ShidouDairenji)\
+★ [Miyuki](https://github.com/MiyukiKun)
