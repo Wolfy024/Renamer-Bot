@@ -193,16 +193,15 @@ async def batchrenamer(event):
     else:
         Batch=True
     temp=text[1]
+    filename_later=""
     if '#zzz' in temp:
         number=temp.split("#zzz",1)
         file_name=number[0]
         file_name=file_name.strip()
         try:
-            print(number)
             number1=number[1]
             number=''
             for i in number1:
-                print(i)
                 if i.isnumeric():
                     number=number+i
                 else:
