@@ -169,6 +169,7 @@ async def renamer(event):
 async def batchrenamer(event):
     chatwhere=event.chat_id
     global usage
+    print("HEELELLEEO")
     usage=True
     reply=await event.get_reply_message()
     text=event.raw_text
