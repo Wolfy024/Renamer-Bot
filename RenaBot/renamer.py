@@ -169,7 +169,6 @@ async def renamer(event):
 async def batchrenamer(event):
     chatwhere=event.chat_id
     global usage
-    print(1)
     usage=True
     reply=await event.get_reply_message()
     text=event.raw_text
@@ -179,7 +178,7 @@ async def batchrenamer(event):
         tasks.clear()
         return
     text=text.split(" ",1)
-    print(2)
+    
     try:
         _=text[1]
     except:
@@ -188,20 +187,18 @@ async def batchrenamer(event):
         tasks.clear()
         return
     Amount_Fetcher=int(*re.findall(r'\d+', text[0]))
-    print(3)
+    
     if Amount_Fetcher==0:
         Batch=False
     else:
         Batch=True
     temp=text[1]
-    print(4)
+    
     print(temp)
     if '#zzz' in temp:
-        print(5)
         number=temp.split("#zzz",1)
-        print(number)
         file_name=number[0]
-        file_name=file_name.strip(0)
+        file_name=file_name.strip()
         print(file_name)
         try:
             print(number)
