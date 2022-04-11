@@ -197,6 +197,7 @@ async def batchrenamer(event):
         file_name=file_name.strip()
         try:
             number1=number[1]
+            print(number1)
             for i in number1:
                 if i.isnumeric():
                     number1=number1+i
