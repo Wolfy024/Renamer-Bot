@@ -194,23 +194,20 @@ async def batchrenamer(event):
     if '#zzz' in temp:
         number=temp.split("#zzz",1)
         file_name=number[0]
-        file_name=file_name.strip()
+        file_name=file_name.strip(0
         try:
             number1=number[1]
-            print(number1)
             for i in number1:
                 if i.isnumeric():
-                    number1=number1+i
+                    number=number+i
                 else:
                     filename_later=filename_later+i
-            print(number1,filename_later)
-            if len(number1)==0:
+            if len(number)==0:
                 await event.reply("Enter a number after zzz.")
                 usage=False
                 tasks.clear()
                 return
-            number=int(number1)
-            print(number)
+            number=int(number)
         except Exception as E:
             await event.reply(E)
             await event.reply("Enter a number after zzz not text.")
