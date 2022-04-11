@@ -213,8 +213,7 @@ async def batchrenamer(event):
                 return
             number=int(number)
             print(number,filenmae_later)
-        except Exception as E:
-            await event.reply(E)
+        except:
             await event.reply("Enter a number after zzz not text.")
             usage= False
             tasks.clear()
