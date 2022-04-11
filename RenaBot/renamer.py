@@ -199,6 +199,7 @@ async def batchrenamer(event):
             number1=number[1]
             number=''
             for i in number1:
+                print(i)
                 if i.isnumeric():
                     number=number+i
                     print(i)
