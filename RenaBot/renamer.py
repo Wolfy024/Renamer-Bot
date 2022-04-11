@@ -201,14 +201,15 @@ async def batchrenamer(event):
                 if i.isnumeric():
                     number=number+i
                 else:
-                    break
+                    filename_later=filename_later+i
             if len(number1)==0:
                 await event.reply("Enter a number after zzz.")
                 usage=False
                 tasks.clear()
                 return
             number=int(number1)
-        except:
+        except Exception as E:
+            await event.reply(E)
             await event.reply("Enter a number after zzz not text.")
             usage= False
             tasks.clear()
@@ -247,9 +248,9 @@ async def batchrenamer(event):
         except:
             download_ext=""
         if os.path.exists(f"Thumbs\\{event.peer_id.user_id}.png"):
-            await upload_with_progress_bar(client=C,edited=probar_edit,file_location=download, name=f"{file_name} {number}{download_ext}",thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
+            await upload_with_progress_bar(client=C,edited=probar_edit,file_location=download, name=f"{file_name} {number}{filename_later}{download_ext}",thumbnail=f"Thumbs\\{event.peer_id.user_id}.png")
         else:
-            await upload_with_progress_bar(client=C,edited=probar_edit,file_location=download, name=f"{file_name} {number}{download_ext}")
+            await upload_with_progress_bar(client=C,edited=probar_edit,file_location=download, name=f"{file_name} {number}{filename_later}{download_ext}")
         j=j+1
         await replyedit_message.edit(f"File {j}")
         number=number+1
