@@ -198,6 +198,8 @@ async def batchrenamer(event):
         try:
             number1=number[1]
             number=''
+            print(number)
+            print(number1)
             for i in number1:
                 print(i)
                 if i.isnumeric():
@@ -212,7 +214,7 @@ async def batchrenamer(event):
                 tasks.clear()
                 return
             number=int(number)
-            print(number,filenmae_later)
+            print(number,filename_later)
         except:
             await event.reply("Enter a number after zzz not text.")
             usage= False
