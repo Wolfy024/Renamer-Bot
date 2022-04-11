@@ -178,7 +178,6 @@ async def batchrenamer(event):
         tasks.clear()
         return
     text=text.split(" ",1)
-    print(text)
     try:
         _=text[1]
     except:
@@ -187,13 +186,11 @@ async def batchrenamer(event):
         tasks.clear()
         return
     Amount_Fetcher=int(*re.findall(r'\d+', text[0]))
-    print(Amount_Fetcher)
     if Amount_Fetcher==0:
         Batch=False
     else:
         Batch=True
     temp=text[1]
-    print(temp)
     if '#zzz' in temp:
         number=temp.split("#zzz",1)
         file_name=number[0]
