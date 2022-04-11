@@ -197,7 +197,9 @@ async def batchrenamer(event):
     print(4)
     print(temp)
     if '#zzz' in temp:
+        print(5)
         number=temp.split("#zzz",1)
+        print(number)
         file_name=number[0]
         file_name=file_name.strip(0)
         print(file_name)
