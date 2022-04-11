@@ -1,3 +1,5 @@
+#SIGMA MALE
+
 from RenaBot.config import client as C
 from RenaBot.config import Admin
 from telethon import events,Button
