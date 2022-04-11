@@ -1,4 +1,4 @@
-#SIGMA MALE
+#SIGMA MALE B)
 
 from RenaBot.config import client as C
 from RenaBot.config import Admin
